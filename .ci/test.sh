@@ -16,8 +16,7 @@ echo "========================================="
 echo "= Checking code for R style problems... ="
 echo "========================================="
 
-    Rscript ${CI_TOOLS}/lint_r_code.R \
-        --package-dir $(pwd)/
+    Rscript ${CI_TOOLS}/lint_r_code.R $(pwd)
 
 echo "done checking code for style problems."
 
@@ -25,6 +24,7 @@ echo "======================="
 echo "= Running R CMD CHECK ="
 echo "======================="
 
+    # Rscript -e "testthat::test_dir('tests/testthat', stop_on_failure = TRUE)"
     Rscript ${CI_TOOLS}/r_cmd_check_test.R \
         --pkg-dir $(pwd)/ \
         --allowed-notes 0 \
@@ -32,3 +32,4 @@ echo "======================="
         --allowed-errors 0
 
 echo "done running R CMD CHECK"
+exit 0
